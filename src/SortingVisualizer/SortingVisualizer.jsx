@@ -1,5 +1,4 @@
 import React from 'react';
-import { Fragment } from 'react'
 import './SortingVisualizer.css';
 
 export default class SortingVisualizer extends React.Component {
@@ -17,23 +16,38 @@ export default class SortingVisualizer extends React.Component {
 
   resetArray() {
     const array = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 310; i++) {
       array.push(randomIntFromInterval(5, 1000));
     }
     this.setState({array});
   }
 
+  mergeSort() {}
+
+  quickSort() {}
+
+  heapSort() {}
+
+  bubbleSort() {}
+
   render() {
     const {array} = this.state;
 
     return (
-      <Fragment>
+      <div className="array-container">
         {array.map((value, idx) => (
-          <div className="array=bar" keys={idx}>
-            {value}
+          <div
+            className="array-bar"
+            keys={idx}
+            style={{height: `${(value/10)-10}vh`}}>
           </div>
         ))}
-      </Fragment>
+        <button onClick={() => this.resetArray()}>Generate New Array</button>
+        <button onClick={() => this.mergeSort()}>Merge Sort</button>
+        <button onClick={() => this.quickSort()}>Quick Sort</button>
+        <button onClick={() => this.heapSort()}>Heap Sort</button>
+        <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+      </div>
     );
   }
 }
